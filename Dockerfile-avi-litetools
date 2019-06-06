@@ -1,0 +1,30 @@
+FROM alpine:latest
+
+ENV ANSIBLE_HOST_KEY_CHECKING False
+
+RUN apk add --update \
+python \
+python-dev \
+py-pip \
+ansible \
+openssl \
+ca-certificates
+
+RUN pip install \
+avisdk \
+requests \
+&& ansible-galaxy install \
+avinetworks.aviconfig \
+avinetworks.avicontroller \
+avinetworks.avicontroller-azure \
+avinetworks.avicontroller_csp \
+avinetworks.avicontroller_vmware \
+avinetworks.avisdk \
+avinetworks.avise  \
+avinetworks.avise_csp \
+avinetworks.docker \
+avinetworks.network_interface \
+avinetworks.avimigrationtools \
+avinetworks.avise_vmware
+
+COPY * ./

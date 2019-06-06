@@ -1,0 +1,29 @@
+#to build/run
+#
+# build image in empty folder
+# sudo docker build -f Dockerfile-test --rm -t deb-test .
+# sudo docker run --rm -i -v"/tmp":"/tmp" -v "$(pwd)":"/terraform" -w="/terraform" deb-terraform terraform "$@"
+#
+# run inside the container
+  # sudo docker run --rm -it deb-test bash
+
+FROM debian:latest
+
+RUN echo '"\e[A":history-search-backward' >> /root/.inputrc
+RUN echo '"\e[B":history-search-forward' >> /root/.inputrc
+RUN echo 'alias ll="ls -lA"' >> /root/.bashrc
+
+RUN apt-get update && apt-get install -y \
+vim-tiny
+
+# RUN wget https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip && \
+# unzip terraform_0.11.11_linux_amd64.zip -d /usr/local/bin && rm terraform_0.11.11_linux_amd64.zip
+#
+# RUN wget https://dl.google.com/go/go1.12.linux-amd64.tar.gz && \
+# tar -xvf go1.12.linux-amd64.tar.gz && mv go /usr/local && rm go1.12.linux-amd64.tar.gz
+#
+# RUN mkdir -p $GOPATH/src/github.com/avinetworks && \
+# cd $GOPATH/src/github.com/avinetworks && \
+# git clone https://github.com/avinetworks/terraform-provider-avi.git && \
+# cd $GOPATH/src/github.com/avinetworks/terraform-provider-avi && make && \
+# cp /bin/terraform-provider-avi /usr/local/bin/

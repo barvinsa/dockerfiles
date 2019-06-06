@@ -1,0 +1,29 @@
+# sudo docker build -f Dockerfile-python -t deb-python .
+# sudo docker run --rm -i -v "$(pwd)":"/python" -w="/python" deb-python python "$@"
+
+
+FROM debian:stretch
+
+RUN apt-get update
+RUN apt-get install -y \
+python \
+python-pip \
+openssh-client
+
+RUN pip install \
+ansible \
+avisdk
+
+# RUN ansible-galaxy install \
+# avinetworks.avicontroller_vmware \
+# avinetworks.aviconfig
+
+# RUN echo "bind '"\e[A": history-search-backward'" >> /root/.inputrc
+# RUN echo "bind '"\e[B": history-search-forward'" >> /root/.inputrc
+RUN echo "alias h='history'" >> /root/.bashrc
+RUN echo "alias i='grep'" >> /root/.bashrc
+RUN echo "alias g='grep'" >> /root/.bashrc
+RUN echo "alias ll='ls -la --color'" >> /root/.bashrc
+RUN echo 'export PS1="\[\e[38;5;231m\]\A\[\e[m\]\[\e[38;5;46m\][deb-container]\[\e[m\]\[\e[38;5;245m\]\w \[\e[m\]\[\e[38;5;250m\]# \[\e[m\]"' >> /root/.bashrc
+
+COPY * ./
