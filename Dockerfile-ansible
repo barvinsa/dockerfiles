@@ -11,7 +11,7 @@ ENV ANSIBLE_FORCE_COLOR True
 RUN echo '"\e[A":history-search-backward' >> /root/.inputrc
 RUN echo '"\e[B":history-search-forward' >> /root/.inputrc
 RUN echo 'alias ll="ls -lA"' >> /root/.bashrc
-RUN echo 'export PS1="\[\e[38;5;231m\]\A\[\e[m\]\[\e[38;5;46m\][avi_ansible]\[\e[m\]\[\e[38;5;245m\]\w \[\e[m\]\[\e[38;5;250m\]# \[\e[m\]"' >> /root/.bashrc
+RUN echo 'export PS1="\[\e[38;5;231m\]\A\[\e[m\]\[\e[38;5;46m\][avi_ansible_container]\[\e[m\]\[\e[38;5;245m\]\w \[\e[m\]\[\e[38;5;250m\]# \[\e[m\]"' >> /root/.bashrc
 
 RUN apt-get update && apt-get install -y \
 python-dev \
