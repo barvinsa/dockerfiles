@@ -1,7 +1,7 @@
 # build with VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle file in /tmp
 
 #sudo docker build -t avi_ansible https://raw.githubusercontent.com/barvinsa/dockerfiles/master/Dockerfile-ansible
-#sudo docker run --rm -i -v"/tmp":"/tmp" -v "$(pwd)":"/ansible" -w="/ansible" fenix2:avi_ansible bash
+#sudo docker run --rm -it -v"/tmp":"/tmp" -v "$(pwd)":"/ansible" -w="/ansible" fenix2:avi_ansible bash
 
 FROM debian:latest
 
