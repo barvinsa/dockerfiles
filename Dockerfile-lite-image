@@ -1,0 +1,32 @@
+ROM debian:stretch
+
+ENV ANSIBLE_HOST_KEY_CHECKING False
+ENV ANSIBLE_FORCE_COLOR True
+
+RUN apt-get update && apt-get install -y \
+python-dev \
+python-pip \
+python-virtualenv \
+python-cffi \
+libssl-dev \
+libffi-dev \
+openssh-client \
+sshpass \
+git
+
+RUN pip install \
+ansible \
+avisdk --upgrade \
+pyVmomi \
+pyVim \
+netaddr \
+pysphere \
+jmespath \
+avimigrationtools \
+requests-toolbelt
+
+RUN ansible-galaxy install -f \
+avinetworks.avisdk \
+avinetworks.avicontroller_vmware
+
+RUN git clone https://github.com/avinetworks/ansible-role-avise-csp.git /root/.ansible/roles/avinetworks.avise_csp
