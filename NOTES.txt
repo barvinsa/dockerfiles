@@ -1,5 +1,0 @@
-sudo docker images -a
-sudo docker image prune -af
-
-sudo docker ps -a
-sudo docker rm -f $(sudo docker ps -a -q)
