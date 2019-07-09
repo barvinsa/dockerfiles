@@ -3,7 +3,7 @@
 #sudo docker build -t avi_ansible https://raw.githubusercontent.com/barvinsa/dockerfiles/master/Dockerfile-ansible
 #pull and run in the same directory with the playbooks
 #docker pull fenix2/avi:ansible
-#sudo docker run --rm -it -v"/tmp":"/tmp" -v "$(pwd)":"/ansible" -w="/ansible" fenix2:ansible bash
+#sudo docker run --rm -it -v"/tmp":"/tmp" -v "$(pwd)":"/ansible" -w="/ansible" fenix2/avi:ansible bash
 
 FROM debian:latest
 
