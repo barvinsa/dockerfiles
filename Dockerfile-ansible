@@ -1,7 +1,9 @@
-# build with VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle file in /tmp
-
+#auto-builds image on dockerhub
+#manual build
 #sudo docker build -t avi_ansible https://raw.githubusercontent.com/barvinsa/dockerfiles/master/Dockerfile-ansible
-#sudo docker run --rm -it -v"/tmp":"/tmp" -v "$(pwd)":"/ansible" -w="/ansible" fenix2:avi_ansible bash
+#pull and run in the same directory with the playbooks
+#docker pull fenix2/avi:ansible
+#sudo docker run --rm -it -v"/tmp":"/tmp" -v "$(pwd)":"/ansible" -w="/ansible" fenix2:ansible bash
 
 FROM debian:latest
 
@@ -41,7 +43,9 @@ avinetworks.avicontroller_vmware
 
 RUN git clone https://github.com/avinetworks/ansible-role-avise-csp.git /root/.ansible/roles/avinetworks.avise_csp
 
+#build with VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle file in /tmp
 #must have ovftool file in the folder within the build context not an absolute path on the host
+
 # COPY VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle ./
 # RUN chmod +x ./VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle
 # RUN ./VMware-ovftool-4.3.0-7948156-lin.x86_64.bundle --eulas-agreed --required
