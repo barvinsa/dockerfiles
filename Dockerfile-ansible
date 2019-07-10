@@ -1,9 +1,7 @@
 #auto-builds image on dockerhub
-#manual build
-#sudo docker build -t avi_ansible https://raw.githubusercontent.com/barvinsa/dockerfiles/master/Dockerfile-ansible
 #pull and run in the same directory with the playbooks
 #docker pull fenix2/avi:ansible
-#sudo docker run --rm -it -v "$(pwd)":"/ansible" -w="/ansible" fenix2/avi:ansible bash
+#docker run --rm -it -v "$(pwd)":"/ansible" -w="/ansible" fenix2/avi:ansible bash
 
 FROM debian:latest
 

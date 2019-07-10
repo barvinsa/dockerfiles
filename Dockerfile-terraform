@@ -1,11 +1,9 @@
-#to build/run
-#
-# build image in empty folder
-# sudo docker build -f Dockerfile-terraform --rm -t deb-terraform .
-# sudo docker run --rm -i -v"/tmp":"/tmp" -v "$(pwd)":"/terraform" -w="/terraform" deb-terraform terraform "$@"
-#
-# run inside the container
-# sudo docker run --rm -it -v"/tmp":"/tmp" -v "$(pwd)":"/terraform" -w="/terraform" deb-terraform bash
+#auto-builds image on dockerhub
+#pull and run in the same directory with the playbooks
+#docker pull fenix2/avi:terraform
+#docker run --rm -it -v "$(pwd)":"/terraform" -w="/terraform" fenix2/avi:terraform bash
+
+
 
 FROM debian:latest
 
@@ -16,6 +14,8 @@ ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 RUN echo '"\e[A":history-search-backward' >> /root/.inputrc
 RUN echo '"\e[B":history-search-forward' >> /root/.inputrc
 RUN echo 'alias ll="ls -lA"' >> /root/.bashrc
+RUN echo 'export PS1="\[\e[38;5;231m\]\A\[\e[m\]\[\e[38;5;46m\][avi_terraform_container]\[\e[m\]\[\e[38;5;245m\]\w \[\e[m\]\[\e[38;5;250m\]# \[\e[m\]"' >> /root/.bashrc
+
 
 RUN apt-get update && apt-get install -y \
 vim-tiny \
