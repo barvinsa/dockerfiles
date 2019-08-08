@@ -22,6 +22,7 @@ vim-tiny \
 wget \
 make \
 unzip \
+curl \
 git
 
 # RUN wget https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip &&
