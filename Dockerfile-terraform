@@ -3,8 +3,6 @@
 #docker pull fenix2/avi:terraform
 #docker run --rm -it -v "$(pwd)":"/terraform" -w="/terraform" fenix2/avi:terraform bash
 
-
-
 FROM debian:latest
 
 # ENV GOROOT=/usr/local/go
@@ -16,25 +14,13 @@ RUN echo '"\e[B":history-search-forward' >> /root/.inputrc
 RUN echo 'alias ll="ls -lA"' >> /root/.bashrc
 RUN echo 'export PS1="\[\e[38;5;231m\]\A\[\e[m\]\[\e[38;5;46m\][avi_terraform_container]\[\e[m\]\[\e[38;5;245m\]\w \[\e[m\]\[\e[38;5;250m\]# \[\e[m\]"' >> /root/.bashrc
 
-
 RUN apt-get update && apt-get install -y \
 vim-tiny \
 wget \
 make \
 unzip \
 curl \
-git
+httpie
 
-# RUN wget https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip &&
-
-RUN wget https://releases.hashicorp.com/terraform/0.12.4/terraform_0.12.4_linux_amd64.zip && \
+RUN wget https://releases.hashicorp.com/terraform/0.12.6/terraform_0.12.6_linux_amd64.zip && \
 unzip terraform_0.12.4_linux_amd64.zip -d /usr/local/bin && rm terraform_0.12.4_linux_amd64.zip
-
-# RUN wget https://dl.google.com/go/go1.12.linux-amd64.tar.gz && \
-# tar -xvf go1.12.linux-amd64.tar.gz && mv go /usr/local && rm go1.12.linux-amd64.tar.gz
-#
-# RUN mkdir -p $GOPATH/src/github.com/avinetworks && \
-# cd $GOPATH/src/github.com/avinetworks && \
-# git clone https://github.com/avinetworks/terraform-provider-avi.git && \
-# cd $GOPATH/src/github.com/avinetworks/terraform-provider-avi && make && \
-# cp /bin/terraform-provider-avi /usr/local/bin/
