@@ -1,6 +1,6 @@
 #auto-builds image on dockerhub
 #pull and run in the same directory with the playbooks
-#docker pull fenix2/avi:ansible
+#docker pull fenix2/avi:avitools2
 #docker run --rm -it -v "$(pwd)":"/ansible" -w="/ansible" fenix2/avi:avitools2 bash
 
 FROM avinetworks/avitools:18.2.6.post1
