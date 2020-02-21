@@ -3,8 +3,6 @@
 #docker pull fenix2/avi:avitools2
 #docker run --rm -it -v "$(pwd)":"/ansible" -w="/ansible" fenix2/avi:avitools2 bash
 
-pip install prettytable
-
 FROM avinetworks/avitools:18.2.7
 
 ENV ANSIBLE_HOST_KEY_CHECKING False
@@ -15,6 +13,6 @@ RUN echo '"\e[B":history-search-forward' >> /root/.inputrc
 RUN echo 'alias ll="ls -lA"' >> /root/.bashrc
 RUN echo 'export PS1="\[\e[38;5;231m\]\A\[\e[m\]\[\e[38;5;46m\][avitools2]\[\e[m\]\[\e[38;5;245m\]\w \[\e[m\]\[\e[38;5;250m\]# \[\e[m\]"' >> /root/.bashrc
 
-
+RUN pip install prettytable
 RUN rm -rf /root/.ansible/roles/avinetworks.avise_csp
 RUN git clone https://github.com/avinetworks/ansible-role-avise-csp.git /root/.ansible/roles/avinetworks.avise_csp
