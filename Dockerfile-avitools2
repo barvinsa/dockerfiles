@@ -3,7 +3,7 @@
 #docker pull fenix2/avi:avitools2
 #docker run --rm -it -v "$(pwd)":"/ansible" -w="/ansible" fenix2/avi:avitools2 bash
 
-FROM avinetworks/avitools:18.2.7
+FROM avinetworks/avitools:18.2.8b1
 
 ENV ANSIBLE_HOST_KEY_CHECKING False
 ENV ANSIBLE_FORCE_COLOR True
